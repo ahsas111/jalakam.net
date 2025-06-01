@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 Rajeesh K V <rajeeshknambiar@gmail.com> -->
+<component type="font">
+  <id>in.org.rachana.rit-rachana</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>OFL-1.1</project_license>
+  <name>RIT Rachana Malayalam font</name>
+  <name xml:lang="ml">ആര്‍ഐടി രചന  ലിപിസഞ്ചയം</name>
+  <summary>RIT Rachana Malayalam Unicode font</summary>
+  <description>
+    <p>
+      Unicode font for traditional Malayalam script designed by K.H. Hussain and
+      maintained by Rachana Institute of Typography. Regular, Italic, Bold and
+      BoldItalic variants.
+    </p>
+    <p>
+        RIT Rachana contains comprehensive glyphset for Malayalam traditional orthography with
+        more than 1000 glyphs.
+    </p>
+  </description>
+  <update_contact>rajeeshknambiar@gmail.com</update_contact>
+  <provides>
+          <font>RIT Rachana Regular</font>
+	  <font>RIT Rachana Italic</font>
+          <font>RIT Rachana Bold</font>
+	  <font>RIT Rachana BoldItalic</font>
+  </provides>
+  <languages>
+          <lang>ml</lang>
+          <lang>en</lang>
+  </languages>
+  <url type="homepage">http://rachana.org.in/</url>
+  <metadata>
+  <value key="FontSampleText">മനുഷ്യരെല്ലാവരും തുല്യാവകാശങ്ങളോടും അന്തസ്സോടും
+	 സ്വാതന്ത്ര്യത്തോടും കൂടി ജനിച്ചവരാണ്. അന്യോന്യം ഭ്രാതൃഭാവത്തോടെ പെരുമാറുവാനാണ്
+	 മനുഷ്യന്നു വിവേകബുദ്ധിയും മനസ്സാക്ഷിയും സിദ്ധമായിരിക്കുന്നത്.</value>
+  <value key="FontIconText">അഇ</value>
+  </metadata>
+</component>
