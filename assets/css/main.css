@@ -2105,24 +2105,14 @@ section,
     font-style: normal;
     font-display: swap;
 }
- @font-face {
-    font-family: 'RIT Rachana';
-    src: url('forms/fonts/RITRachana-Bold.eot');
-    src: url('forms/fonts/RITRachana-Bold.eot?#iefix') format('embedded-opentype'),
-        url('forms/fonts/RITRachana-Bold.woff2') format('woff2'),
-        url('forms/fonts/RITRachana-Bold.woff') format('woff'),
-        url('forms/fonts/RITRachana-Bold.ttf') format('truetype'),
-        url('forms/fonts/RITRachana-Bold.svg#RITRachana-Bold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
+
 .thangal{  
  font-family: "Noto Sans Malayalam", sans-serif;
  
-  font-size: 109%;
+  font-size: 100%;
   font-weight: <weight>;
   font-style: normal;
+  text-align:justify;
 
 }
 #thangal{
