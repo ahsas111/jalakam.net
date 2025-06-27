@@ -2106,15 +2106,34 @@ section,
     font-display: swap;
 }
 
-.thangal{  
- font-family: "Noto Sans Malayalam", sans-serif;
- 
-  font-size: 100%;
-  font-weight: <weight>;
-  font-style: normal;
-  text-align:justify;
 
+
+.thangal, :lang(ml), .ml {
+  font-family: "Anek Malayalam", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-variation-settings:
+    "wdth" 100;
+    line-height: 1.3;
+    font-size: 14.5px;
 }
-#thangal{
-   font-family: "Noto Sans Malayalam", sans-serif;
+.hedd{
+  font-family: "Anek Malayalam", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-weight: ;
+  font-variation-settings:
+    "wdth" 100;
 }
+
+    @media (max-width: 600px) {
+  .thangal, :lang(ml), .ml {
+    word-spacing: -2px !important;
+    letter-spacing: 0 !important;
+    line-height: 1.4;
+    font-size: 1.%;
+    
+  }
+}
+
