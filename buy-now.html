@@ -1,0 +1,277 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Book & Pay</title>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+
+    .center-box {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+      padding: 32px 24px;
+    }
+
+    @media (max-width: 600px) {
+      .center-box {
+        max-width: 95vw;
+        margin: 20px auto;
+        padding: 16px 8px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .navbar,
+    .footer {
+      background: #343a40;
+      color: #fff;
+    }
+
+    .footer {
+      padding: 10px 0;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar (single-post.html style) -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename"><img src="assets/img/jalakam logo head.png" alt=""></h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="Category.html" style="color: aliceblue;" class="active">All posts</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i
+                class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="category.html">Category 1</a></li>
+
+
+          </li>
+          <li><a href="category.html">Category 2</a></li>
+          <li><a href="category.html">Category 3</a></li>
+          <li><a href="category.html">Category 4</a></li>
+        </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="center-box" style="margin-top: 100px;">
+    <h2 class="mb-4 text-center">Subscribe</h2>
+    <form id="bookingForm" class="mb-3">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="phone" required>
+      </div>
+      <div class="mb-3">
+        <label for="plan" class="form-label">Choose Plan</label>
+        <select class="form-select" id="plan" required>
+          <option value="">Select</option>
+          <option value="six_month" data-amount="179">Six Months</option>
+          <option value="one_year" data-amount="339">One Year</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount (₹)</label>
+        <input type="text" class="form-control" id="amount" readonly required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Buy Now</button>
+    </form>
+    <div id="msg" class="mb-3 text-center"></div>
+    <div class="mb-3 text-center">
+      <img src="assets/img/safeer gpay qr.jpeg" alt="Scan to Pay" style="max-width:200px;">
+      <div>Scan with any UPI app</div>
+    </div>
+    <div class="alert alert-info text-center" style="font-size: 1rem;">
+      <strong>Important:</strong> After payment, please WhatsApp your payment details to <b>+91 90741 20112</b>
+    </div>
+  </div>
+
+  <!-- Footer (single-post.html style, compact) -->
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename"><img src="assets/img/jalakam logo head.png" alt=""></span>
+          </a>
+          <div class="footer-contact pt-3">
+
+            <p class="mt-3"><strong>Phone:</strong> <span>+91 90749 48950</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="header-social-links">
+            <a href="#" class="twitter" style="color: aliceblue;"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook" style="color: aliceblue;"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/ahsas_media/" class="instagram" style="color: aliceblue;"><i
+                class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/@ahsasmedia" class="linkedin" style="color: aliceblue;"><i
+                class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">jalakam</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="#">ahsas_media</a>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Firebase & EmailJS script (unchanged) -->
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAymTZ4Rt9UbXBt5Zz1VmVTBlBjspYX7w",
+      authDomain: "jalakamweb.firebaseapp.com",
+      projectId: "jalakamweb",
+      storageBucket: "jalakamweb.appspot.com",
+      messagingSenderId: "666636787709",
+      appId: "1:666636787709:web:a1a87bcc1b0116ab72c394",
+      measurementId: "G-PCWVNNPYE9"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // EmailJS init (replace with your public key)
+    emailjs.init("-c0ot4TlzQCtwJnsm");
+
+    // Auto-fill amount on plan select
+    document.getElementById('plan').addEventListener('change', function () {
+      const selected = this.options[this.selectedIndex];
+      document.getElementById('amount').value = selected.getAttribute('data-amount') || '';
+    });
+
+    document.getElementById('bookingForm').onsubmit = async function (e) {
+      e.preventDefault();
+      const planSelect = document.getElementById('plan');
+      const plan = planSelect.value;
+      const amount = document.getElementById('amount').value;
+      const booking = {
+        plan: plan,
+        name: document.getElementById('name').value,
+        address: document.getElementById('address').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        amount: amount,
+        date: new Date().toISOString()
+      };
+
+      // Save booking to Firestore
+      await db.collection('bookings').add(booking);
+
+      // Send email using EmailJS
+      emailjs.send("service_wp6pg4m", "template_cogsg6j", {
+        name: booking.name,
+        address: booking.address,
+        email: booking.email,
+        plan: booking.plan,
+        phone: booking.phone,
+        amount: booking.amount,
+        mail: booking.email,
+        message: "Booking request for " + booking.plan
+      }).then(function (response) {
+        document.getElementById('msg').innerHTML = "Email sent successfully!";
+      }, function (error) {
+        document.getElementById('msg').innerHTML = "Email failed: " + JSON.stringify(error);
+      });
+
+      // Show message & open UPI payment in same tab
+      document.getElementById('msg').innerHTML = "Booking successful! Opening Google Pay/UPI...";
+      window.location.href = `upi://pay?pa=vksafeer12@okaxis&pn=Jalakam&am=${amount}`;
+      document.getElementById('bookingForm').reset();
+    }
+  </script>
+</body>
+
+</html>

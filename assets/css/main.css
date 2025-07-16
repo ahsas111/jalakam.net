@@ -2112,12 +2112,9 @@ section,
   font-family: "Anek Malayalam", sans-serif;
   font-optical-sizing: auto;
   font-weight: <weight>;
-  font-variation-settings:
-    "wdth" 100;
-    line-height: 1.3;
-    font-size: 14.5px;
-}
-.hedd{
+  font-variation-settings: "wdth" 100;
+  line-height: 1.3;
+  font-size: 14.5px;.hedd{
   font-family: "Anek Malayalam", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -2136,4 +2133,6 @@ section,
     
   }
 }
-
+.jalakamsub {
+  height: 1px;
+}
