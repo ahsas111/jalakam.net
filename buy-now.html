@@ -70,7 +70,7 @@
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <!-- <img src="assets/img/jalakam logo head.png" alt=""> -->
         <h1 class="sitename"><img src="assets/img/jalakam logo head.png" alt=""></h1>
       </a>
 
@@ -137,16 +137,17 @@
         <label for="amount" class="form-label">Amount (₹)</label>
         <input type="text" class="form-control" id="amount" readonly required>
       </div>
-      <button type="submit" class="btn btn-danger w-100">Buy Now</button>
-    </form>
-    <div id="msg" class="mb-3 text-center"></div>
-    <div class="mb-3 text-center">
+      <div class="mb-3 text-center">
       <img src="assets/img/safeer gpay qr.jpeg" alt="Scan to Pay" style="max-width:200px;">
       <div>Scan with any UPI app</div>
     </div>
-    <div class="alert alert-info text-center" style="font-size: 1rem;">
-      <strong>Important:</strong> After payment, please WhatsApp your payment details to <b>+91 90741 20112</b>
-    </div>
+    
+    <div id="msg" class="alert alert-info mb-3 text-center" style="font-size: 1rem; display: none;"></div>
+      <button type="submit" class="btn btn-primary w-100">Buy Now</button>
+    </form>
+    <!-- Modified msg div to be an alert and initially hidden -->
+    
+    
   </div>
 
   <!-- Footer (single-post.html style, compact) -->
@@ -243,13 +244,14 @@
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
         amount: amount,
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        status: 'pending' // Added status field
       };
 
-      // Save booking to Firestore
+      // Save booking to Firestore with 'pending' status
       await db.collection('bookings').add(booking);
 
-      // Send email using EmailJS
+      // Send email using EmailJS (assuming this is for user confirmation with payment instructions)
       emailjs.send("service_wp6pg4m", "template_cogsg6j", {
         name: booking.name,
         address: booking.address,
@@ -257,15 +259,18 @@
         plan: booking.plan,
         phone: booking.phone,
         amount: booking.amount,
-        message: "Booking request for " + booking.plan
+        message: "Booking request for " + booking.plan + ". Please complete your UPI payment and WhatsApp details to confirm." // Modified message for email
       }).then(function (response) {
-        document.getElementById('msg').innerHTML = "Email sent successfully!";
+        // Email sent successfully, but payment is still pending
+        console.log("Email sent (payment instructions):", response);
       }, function (error) {
-        document.getElementById('msg').innerHTML = "Email failed: " + JSON.stringify(error);
+        console.error("Email failed:", error);
       });
 
       // Show message & open UPI payment in same tab
-      document.getElementById('msg').innerHTML = "Booking successful! Opening Google Pay/UPI...";
+      const msgDiv = document.getElementById('msg');
+      msgDiv.innerHTML = "After payment, send a screenshot to WhatsApp number <b>+91 90741 20112</b> to confirm the booking.";
+      msgDiv.style.display = 'block'; // Show the message
       window.location.href = `upi://pay?pa=vksafeer12@okaxis&pn=Jalakam&am=${amount}`;
       document.getElementById('bookingForm').reset();
     }
