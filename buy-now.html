@@ -272,7 +272,7 @@
 
       // Show message & open UPI payment in same tab
       const msgDiv = document.getElementById('msg');
-      msgDiv.innerHTML = "After payment, send a screenshot to WhatsApp number <b>+91 90741 20112</b> to confirm the booking.";
+      msgDiv.innerHTML = "After payment, send a screenshot to WhatsApp number <a href=\"https://wa.me/919074120112\" target=\"_blank\"><b>+91 90741 20112</b></a> to confirm the booking.";
       msgDiv.style.display = 'block'; // Show the message
       window.location.href = `upi://pay?pa=vksafeer12@okaxis&pn=Jalakam&am=${amount}`;
       document.getElementById('bookingForm').reset();
