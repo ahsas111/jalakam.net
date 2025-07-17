@@ -1,12 +1,18 @@
+<<<<<<< HEAD
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
 <head>
   <meta charset="UTF-8">
   <title>Book & Pay</title>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -20,16 +26,25 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+=======
+  <!-- Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
   <style>
     body {
       background: #f8f9fa;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
     .center-box {
       max-width: 400px;
       margin: 60px auto;
       background: #fff;
       border-radius: 10px;
+<<<<<<< HEAD
       box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
       padding: 32px 24px;
     }
@@ -117,6 +132,29 @@
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
         <textarea class="form-control" id="address" required></textarea>
+=======
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    <h2 class="mb-4 text-center">Subscribe</h2>
+    <form id="bookingForm" class="mb-3">
+      <div class="mb-3">
+        <label for="plan" class="form-label">Choose Plan</label>
+        <select class="form-select" id="plan" required>
+          <option value="">Select</option>
+          <option value="one_month" data-amount="39">One Month - ₹39</option>
+          <option value="six_month" data-amount="179">Six Months - ₹179</option>
+          <option value="one_year" data-amount="339">One Year - ₹339</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -126,6 +164,7 @@
         <label for="phone" class="form-label">Phone</label>
         <input type="text" class="form-control" id="phone" required>
       </div>
+<<<<<<< HEAD
       <div class="mb-3">
         <label for="plan" class="form-label">Choose Plan</label>
         <select class="form-select" id="plan" required>
@@ -138,10 +177,13 @@
         <label for="amount" class="form-label">Amount (₹)</label>
         <input type="text" class="form-control" id="amount" readonly required>
       </div>
+=======
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
       <button type="submit" class="btn btn-primary w-100">Buy Now</button>
     </form>
     <div id="msg" class="mb-3 text-center"></div>
     <div class="mb-3 text-center">
+<<<<<<< HEAD
       <img src="assets/img/safeer gpay qr.jpeg" alt="Scan to Pay" style="max-width:200px;">
       <div>Scan with any UPI app</div>
     </div>
@@ -219,10 +261,27 @@
       messagingSenderId: "666636787709",
       appId: "1:666636787709:web:a1a87bcc1b0116ab72c394",
       measurementId: "G-PCWVNNPYE9"
+=======
+      <img src="assets/img/WhatsApp Image 2025-07-16 at 17.59.19.jpeg" alt="Scan to Pay" style="max-width:200px;">
+      <div>Scan with any UPI app</div>
+    </div>
+  </div>
+
+  <script>
+    // Firebase config (replace with your own)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "XXXXXXX",
+      appId: "1:XXXXXXX:web:XXXXXXX"
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
+<<<<<<< HEAD
     // EmailJS init (replace with your public key)
     emailjs.init("-c0ot4TlzQCtwJnsm");
 
@@ -269,9 +328,30 @@
       // Show message & open UPI payment in same tab
       document.getElementById('msg').innerHTML = "Booking successful! Opening Google Pay/UPI...";
       window.location.href = `upi://pay?pa=vksafeer12@okaxis&pn=Jalakam&am=${amount}`;
+=======
+    document.getElementById('bookingForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const planSelect = document.getElementById('plan');
+      const plan = planSelect.value;
+      const amount = planSelect.options[planSelect.selectedIndex].getAttribute('data-amount');
+      const booking = {
+        plan: plan,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        date: new Date().toISOString()
+      };
+      await db.collection('bookings').add(booking);
+      document.getElementById('msg').innerHTML = "Booking successful! Redirecting to Google Pay...";
+      // Google Pay UPI link (replace yourupiid@okicici with your UPI ID)
+      window.open(`upi://pay?pa=hafizrabeeh7@okhdfcbank&pn=Jalakam&am=${amount}`, '_blank');
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
       document.getElementById('bookingForm').reset();
     }
   </script>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 30d48ac0a11bca12a4d30385bd84e61aa997f509
 </html>
